@@ -1,0 +1,50 @@
+<pre class='metadata'>
+Title: Cookie Change Events
+Shortname: cookie-change-events
+Level: 1
+Group: wicg
+Status: ED
+URL: https://patrickkettner.github.io/cookie-change-events
+Editor: Patrick Kettner, Microsoft, patket@microsoft.com
+Abstract: This specification describes an API that can be used to attach events to cookie changes via javascript
+Repository: patrickkettner/cookie-change-events
+</pre>
+
+<section class="non-normative">
+  <h2 id="introduction">Introduction</h2>
+  <em>This section is non-normative.</em>
+  <p>
+    Web Applications have conventionally had to poll document.cookie in order to
+    know when a cookie has been modified or removed. In order to improve performance
+    and reduce the use of unnecessary timers, this specification describes an API
+    that allows for web developers to attach an event listener to `document.cookie`,
+    and receive the relevant information about a cookie change via a callback.
+  </p>
+
+</section>
+
+<section>
+  <h2 id="the-change-event">the Change event</h2>
+  <pre class="idl">
+    [Exposed=Document]
+    partial interface cookie {
+      readonly attribute USVString domain;
+      readonly attribute USVString path;
+      void addEventListener(DOMString type, EventListener listener);
+    };
+
+    enum ChangeCause {
+      "explicit",
+      "evicted",
+      "expired",
+      "expired-overwrite",
+      "overwrite"
+    };
+
+    interface CookieChangeEvent : Event {
+      readonly attribute boolean removed;
+      readonly attribute ChangeCause cause;
+      readonly attribute Cookie cookie;
+    };
+  </pre>
+</section>
