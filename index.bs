@@ -27,7 +27,7 @@ Repository: patrickkettner/cookie-change-events
   <h2 id="the-change-event">the Change event</h2>
   <pre class="idl">
     [Exposed=Document]
-    partial interface cookie {
+    interface Cookie {
       readonly attribute USVString domain;
       readonly attribute USVString path;
       void addEventListener(DOMString type, EventListener listener);
