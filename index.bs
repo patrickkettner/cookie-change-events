@@ -26,10 +26,9 @@ Repository: patrickkettner/cookie-change-events
 <section>
   <h2 id="the-change-event">the Change event</h2>
   <pre class="idl">
-    interface Cookie {
+    interface Cookie : EventTarget {
       readonly attribute USVString domain;
       readonly attribute USVString path;
-      void addEventListener(DOMString type, EventListener listener);
     };
 
     enum ChangeCause {
