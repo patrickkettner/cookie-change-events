@@ -151,6 +151,13 @@ Repository: patrickkettner/cookie-change-events
 
     <section>
       <pre class="idl">
+        [Constructor(DOMString type, optional CookieChangeEventInit eventInitDict), Exposed=(Window)]
+        interface CookieChangeEventInit : Event {
+            boolean removed = false;
+            ChangeCause cause;
+            Cookie cookie;
+        };
+
         interface CookieChangeEvent : Event {
           readonly attribute boolean removed;
           readonly attribute ChangeCause cause;
