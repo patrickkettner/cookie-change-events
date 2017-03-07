@@ -110,7 +110,7 @@ spec:dom; type:interface; text:Document
 
     <pre class="lang-js">
       let cookie = document.cookie
-      typeof cookie // returns true
+      typeof cookie === 'string' // returns true
 
       for (let cookie of document.cookie) {
         if (cookie.name === 'cookieIWantToDelete') {
