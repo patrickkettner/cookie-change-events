@@ -118,7 +118,7 @@ spec:dom; type:interface; text:Document
 
       for (let cookie of document.cookie) {
         if (cookie.name === 'cookieIWantToDelete') {
-          cookie.delete()
+          doucment.cookie.delete(cookie)
         }
       }
     </pre>
@@ -141,7 +141,7 @@ spec:dom; type:interface; text:Document
       event has been fired.
       <ul>
         <li><dfn for='ChangeCause' enum-value>explicit</dfn> is to be used when
-        a cookie's .delete() function is called.</li>
+        a delete() function has been called on a cookie called.</li>
         <li><dfn for='ChangeCause' enum-value>evicted</dfn> is to be used when
         when a cookie has been automatically removed due to garbage collection.</li>
         <li><dfn for='ChangeCause' enum-value>expired</dfn> is to be used when
