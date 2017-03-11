@@ -7,7 +7,7 @@ Status: ED
 URL: https://patrickkettner.github.io/cookie-change-events
 Editor: Patrick Kettner, Microsoft, patket@microsoft.com
 Editor: Arron Eicholz, Microsoft, arronei@microsoft.com
-Abstract: This specification describes an API that can be used to attach events to cookie changes via javascript
+Abstract: This specification describes an object based interface to cookies, and an API that can be used to attach events to cookie changes via javascript
 Repository: patrickkettner/cookie-change-events
 </pre>
 
@@ -23,7 +23,11 @@ spec:dom; type:interface; text:Document
   know when a cookie has been modified or removed. In order to improve performance
   and reduce the use of unnecessary timers, this specification describes an API
   that allows for web developers to attach an event listener to `document.cookie`,
-  and receive the relevant information about a cookie change via a callback.
+  and receive the relevant information about a cookie change via a callback. As a
+  side effect of defining the data about the individual cookie that has changed,
+  this document also creates an object based interface for getting and setting
+  `document.cookie` values
+
 </section>
 
 <section>
