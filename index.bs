@@ -74,7 +74,7 @@ spec:dom; type:interface; text:Document
   <section>
     <pre class="idl">
       [Constructor(CookieInit cookieInitDict), Exposed=Window]
-      interface Cookie : EventTarget {
+      interface Cookie {
           readonly attribute USVString name;
           attribute DOMString expires;
           attribute USVString value;
@@ -96,9 +96,10 @@ spec:dom; type:interface; text:Document
   <section>
     <pre class="idl">
       [Exposed=Window]
-      interface CookieJar {
+      interface CookieJar : EventTarget {
           stringifier attribute USVString value;
-          maplike&lt;USVString, Cookie>;
+          maplike&lt;USVString, Cookie&gt;;
+          attribute EventHandler onchange;
       };
     </pre>
 
@@ -108,7 +109,9 @@ spec:dom; type:interface; text:Document
       };
     </pre>
 
-    For backwards compatibility, a {{CookieJar}}, when implemented as document.cookie,
+    {{CookieJar}} defines an onchange event handler to listen for a `change` event
+    (see: [[#the-change-event]]).
+    For backwards compatibility, a {{CookieJar}}, when accessed as document.cookie,
     returns the serialized string version of a {{Cookie}}. However, a iterator
     is also defined, which returns the object form of {{Cookie}} on each iteration.
 
