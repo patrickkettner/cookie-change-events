@@ -83,7 +83,6 @@ spec:dom; type:interface; text:Document
           readonly attribute boolean secure;
           readonly attribute boolean session;
           stringifier USVString ();
-          setter USVString ((Cookie or USVString) cookie);
       };
     </pre>
 
@@ -100,6 +99,7 @@ spec:dom; type:interface; text:Document
           stringifier attribute USVString value;
           maplike&lt;USVString, Cookie&gt;;
           attribute EventHandler onchange;
+          setter USVString ((Cookie or USVString) cookie);
       };
     </pre>
 
