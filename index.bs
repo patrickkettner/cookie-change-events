@@ -48,25 +48,25 @@ spec:dom; type:interface; text:Document
     A {{CookieInit}} is a generic object that can be used to define a new cookie.
     You can set the following fields:
     <ul>
-      <li><dfn for='CookieInit'>name</dfn> is the key value in the
+      <li><dfn for='CookieInit' dict-member>name</dfn> is the key value in the
       key value pairing for cookies. Because of backwards compatibility, it
       is not required.</li>
-      <li><dfn for='CookieInit'>expires</dfn> is an optional string
+      <li><dfn for='CookieInit' dict-member>expires</dfn> is an optional string
       value of a <a href='https://tools.ietf.org/html/rfc1123'>RFC 1123 Date</a>, pursuant to <a href='https://tools.ietf.org/html/rfc6265#section-4.1.1'>RFC 6265§4.1.1</a></li>
-      <li><dfn for='CookieInit'>maxAge</dfn> is an optional numeric
+      <li><dfn for='CookieInit' dict-member>maxAge</dfn> is an optional numeric
       value that, when specified, defines the number of seconds until the cookie
       expires, starting when the value is set, pursuant to <a href='https://tools.ietf.org/html/rfc6265#section-5.2.2'>RFC 6265§5.2.2</a></li>
-      <li><dfn for='CookieInit'>domain</dfn> is an optional attribute
+      <li><dfn for='CookieInit' dict-member>domain</dfn> is an optional attribute
       that specifies what domain the cookie will be sent to, pursuant to
       <a href='https://tools.ietf.org/html/rfc6265#section-5.2.3'>RFC 6265§5.2.3</a>.</li>
-      <li><dfn for='CookieInit'>path</dfn> is an optional attribute
+      <li><dfn for='CookieInit' dict-member>path</dfn> is an optional attribute
       that will only give access to the cookie if the requested resource matches
       the specified path, pursuant to <a href='https://tools.ietf.org/html/rfc6265#section-5.2.4'>RFC 6265§5.2.4</a>.</li>
-      <li><dfn for='CookieInit'>secure</dfn> is an optional boolean
+      <li><dfn for='CookieInit' dict-member>secure</dfn> is an optional boolean
       attribute that, when true, signals that the cookie can only be transmitted
       over "secure" protocols, as defined by the user agent. pursuant to
       <a href='https://tools.ietf.org/html/rfc6265#section-5.4'>RFC 6265§5.4</a>, subsection 1</li>
-      <li><dfn for='CookieInit'>value</dfn> is the only required
+      <li><dfn for='CookieInit' dict-member>value</dfn> is the only required
       attribute. It is a string, as defined as a cookie-value in <a href='https://tools.ietf.org/html/rfc6265'>RFC 6265</a></li>
     </ul>
   </section>
@@ -81,7 +81,6 @@ spec:dom; type:interface; text:Document
           readonly attribute USVString domain;
           readonly attribute USVString path;
           readonly attribute boolean secure;
-          readonly attribute boolean session;
           stringifier USVString ();
       };
     </pre>
@@ -103,14 +102,22 @@ spec:dom; type:interface; text:Document
       };
     </pre>
 
+    {{CookieJar}} represents all of the current cookies set on a domain, and is
+    available via `document.cookie`.
+    <ul>
+        <li><dfn for='CookieJar' attribute>value</dfn> is a seralized version of
+        the current valid cookies, in the same format as the historical value 
+        returns from `document.cookie`.</li>
+        <li><dfn for='CookieJar' attribute>onchange</dfn> is an event handler to
+        listen for a `change` event (see: [[#the-change-event]])</li>
+    </ul>
+
     <pre class="idl">
       partial interface Document {
           [PutForwards=value] attribute CookieJar cookie;
       };
     </pre>
 
-    {{CookieJar}} defines an onchange event handler to listen for a `change` event
-    (see: [[#the-change-event]]).
     For backwards compatibility, a {{CookieJar}}, when accessed as document.cookie,
     returns the serialized string version of a {{Cookie}}. However, a iterator
     is also defined, which returns the object form of {{Cookie}} on each iteration.
@@ -180,11 +187,11 @@ spec:dom; type:interface; text:Document
       A {{CookieChangeEvent}} is an event that is fired when a {{ChangeCause}}
       has been triggered.
       <ul>
-        <li><dfn for='CookieChangeEvent'>removed</dfn> is a boolean
+        <li><dfn for='CookieChangeEvent' attribute>removed</dfn> is a boolean
           that represents whether or not a cookie has been removed from the {{CookieJar}}</li>
-        <li><dfn for='CookieChangeEvent'>cause</dfn> is a valid {{ChangeCause}},
+        <li><dfn for='CookieChangeEvent' attribute>cause</dfn> is a valid {{ChangeCause}},
         representing why a cookie the cookie in question has been modified.</li>
-        <li><dfn for='CookieChangeEvent'>cookie</dfn> is a valid {{Cookie}}, that
+        <li><dfn for='CookieChangeEvent' attribute>cookie</dfn> is a valid {{Cookie}}, that
           represents the cookie that has been modified.</li>
       </ul>
     </section>
