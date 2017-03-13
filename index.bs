@@ -41,7 +41,7 @@ spec:dom; type:interface; text:Document
           USVString domain;
           USVString path;
           boolean secure;
-          required USVString value;
+          USVString value;
       };
     </pre>
 
@@ -49,8 +49,7 @@ spec:dom; type:interface; text:Document
     You can set the following fields:
     <ul>
       <li><dfn for='CookieInit' dict-member>name</dfn> is the key value in the
-      key value pairing for cookies. Because of backwards compatibility, it
-      is not required.</li>
+      key value pairing for cookies. Because of backwards compatibility.</li>
       <li><dfn for='CookieInit' dict-member>expires</dfn> is an optional string
       value of a <a href='https://tools.ietf.org/html/rfc1123'>RFC 1123 Date</a>, pursuant to <a href='https://tools.ietf.org/html/rfc6265#section-4.1.1'>RFC 6265§4.1.1</a></li>
       <li><dfn for='CookieInit' dict-member>maxAge</dfn> is an optional numeric
@@ -66,8 +65,8 @@ spec:dom; type:interface; text:Document
       attribute that, when true, signals that the cookie can only be transmitted
       over "secure" protocols, as defined by the user agent. pursuant to
       <a href='https://tools.ietf.org/html/rfc6265#section-5.4'>RFC 6265§5.4</a>, subsection 1</li>
-      <li><dfn for='CookieInit' dict-member>value</dfn> is the only required
-      attribute. It is a string, as defined as a cookie-value in <a href='https://tools.ietf.org/html/rfc6265'>RFC 6265</a></li>
+      <li><dfn for='CookieInit' dict-member>value</dfn> is a string, as defined
+      as a cookie-value in <a href='https://tools.ietf.org/html/rfc6265'>RFC 6265</a></li>
     </ul>
   </section>
 
