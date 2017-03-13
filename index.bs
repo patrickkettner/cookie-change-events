@@ -73,7 +73,7 @@ spec:dom; type:interface; text:Document
 
   <section>
     <pre class="idl">
-      [Constructor(CookieInit cookieInitDict), Exposed=Window]
+      [Constructor((CookieInit or USVString) cookie), Exposed=Window]
       interface Cookie {
           readonly attribute USVString name;
           attribute DOMString expires;
