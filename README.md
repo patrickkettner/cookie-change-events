@@ -1,4 +1,6 @@
 # cookie change events
+[Explainer](https://github.com/patrickkettner/cookie-change-events/blob/master/explainer.md)
+
 [Draft specification](https://patrickkettner.github.io/cookie-change-events/)
 
 Web applications have no way of knowing when a cookie has been modified if it is
